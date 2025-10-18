@@ -17,6 +17,18 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+
+            // 🔽 ここから追加カラム
+            $table->string('gender')->nullable();
+            $table->date('birth_date')->nullable();
+            $table->string('residence')->nullable();
+            $table->boolean('confirmation')->default(false);
+            $table->text('self_introduction')->nullable();
+            $table->string('photo_settings')->nullable();
+            $table->string('spot')->nullable();
+            $table->string('music')->nullable();
+            // 🔼 ここまで
+
             $table->rememberToken();
             $table->timestamps();
         });
