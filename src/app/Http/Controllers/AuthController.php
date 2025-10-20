@@ -87,8 +87,15 @@ class AuthController extends Controller
     /**
      * ダッシュボード表示
      */
+    // public function dashboard()
+    // {
+    //     return view('dashboard');
+    // }
     public function dashboard()
     {
-        return view('dashboard');
+        // ログイン中のユーザーを除いた全ユーザーを取得
+        $users = User::where('id', '!=', Auth::id())->get();
+
+        return view('dashboard', compact('users'));
     }
 }
