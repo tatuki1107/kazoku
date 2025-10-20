@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\UserController;
 
 // 認証関連のルート
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -16,4 +18,15 @@ Route::get('/dashboard', [AuthController::class, 'dashboard'])->middleware('auth
 // ホームページ
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::middleware('auth')->group(function () {
+
+    // --- DMルート ---
+    Route::get('/messages/{userId}', [MessageController::class, 'index'])->name('messages.index');
+    Route::post('/messages', [MessageController::class, 'store'])->name('messages.store');
+
+    // --- ユーザー一覧・詳細 ---
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
 });
