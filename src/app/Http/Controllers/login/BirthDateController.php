@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\login;
 
+use App\Http\Controllers\Controller; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -9,7 +10,7 @@ class BirthDateController extends Controller
 {
     public function show()
     {
-        return view('birth_date'); // resources/views/birth_date.blade.php
+        return view('auth.login.birth_date'); // resources/views/birth_date.blade.php
     }
 
     public function store(Request $request)

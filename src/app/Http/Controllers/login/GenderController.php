@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\login;
 
+use App\Http\Controllers\Controller; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -9,7 +10,7 @@ class GenderController extends Controller
 {
     public function show()
     {
-        return view('gender'); // resources/views/gender.blade.php を表示
+        return view('auth.login.gender'); // resources/views/auth/login/gender.blade.php を表示
     }
 
     public function store(Request $request)

@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\GenderController; 
-use App\Http\Controllers\BirthDateController;
-use App\Http\Controllers\ResidenceController;
-use App\Http\Controllers\ConfirmationController;
+use App\Http\Controllers\login\AuthController;
+use App\Http\Controllers\login\GenderController; 
+use App\Http\Controllers\login\BirthDateController;
+use App\Http\Controllers\login\ResidenceController;
+use App\Http\Controllers\login\ConfirmationController;
 
 // 認証関連のルート
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
