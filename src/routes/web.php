@@ -6,6 +6,8 @@ use App\Http\Controllers\login\GenderController;
 use App\Http\Controllers\login\BirthDateController;
 use App\Http\Controllers\login\ResidenceController;
 use App\Http\Controllers\login\ConfirmationController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\UserController;
 
 // 認証関連のルート
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -50,17 +52,6 @@ Route::post('/confirmation', [ConfirmationController::class, 'store'])
     ->middleware('auth')
     ->name('confirmation.store');
 
-// 確認ページ表示
-Route::get('/confirmation', function () {
-    return view('confirmation');
-})->name('confirmation.show');
-
-// 確認ページ送信（→ ダッシュボードへ）
-Route::post('/confirmation', function () {
-    // 編集された内容をここで保存したり更新したりする処理を入れてOK
-    return redirect()->route('dashboard');
-})->name('confirmation.submit');
-
 // ダッシュボード（認証が必要）
 Route::get('/dashboard', [AuthController::class, 'dashboard'])
     ->middleware('auth')
@@ -71,3 +62,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware('auth')->group(function () {
+
+    // --- DMルート ---
+    Route::get('/messages/{userId}', [MessageController::class, 'index'])->name('messages.index');
+    Route::post('/messages', [MessageController::class, 'store'])->name('messages.store');
+
+    // --- ユーザー一覧・詳細 ---
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
+});

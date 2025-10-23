@@ -103,12 +103,21 @@
                     </div>
                 </div>
                 <div class="bg-gray-50 px-5 py-3">
-                    <div class="text-sm">
-                        <a href="#" class="font-medium text-indigo-700 hover:text-indigo-900">
-                            メッセージを見る
-                        </a>
-                    </div>
-                </div>
+                @foreach($users as $user)
+    <div class="bg-gray-50 px-5 py-3">
+        <div class="text-sm">
+            <!-- <a href="{{ route('messages.index', ['userId' => $user->id]) }}"
+                class="font-medium text-indigo-700 hover:text-indigo-900">
+                {{ $user->name }} 
+            </a> -->
+            <a href="{{ route('users.index') }}">ユーザー一覧</a>
+
+        </div>
+    </div>
+@endforeach
+
+</div>
+
             </div>
         </div>
 
