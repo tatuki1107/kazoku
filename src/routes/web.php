@@ -62,6 +62,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// テストページ
+Route::get('/test', function () {
+    return view('test.home');
+});
+
 Route::middleware('auth')->group(function () {
 
     // --- DMルート ---
